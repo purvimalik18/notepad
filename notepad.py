@@ -16,6 +16,7 @@ menu.Editmenu.add_cascade(label='Edit', menu='f')
 f.Editmenu.add_command(label='Cut', command='f.__cut')
 f.Editmenu.add_command(label='Copy', command='f.__copy')
 f.Editmenu.add_command(label='Paste', command='f.__paste')
+f
 
 menu.Commandmenu.add_cascade(label='Commands', menu='f')
 f.Commandmenu.add_command(label='About Commands', command='f.__showCommands')
