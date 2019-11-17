@@ -1,30 +1,38 @@
 from tkinter import *
-m = Tk()
+#to save, read, write, etc
+import os
+
+m = Tk()  # to create window
+m.geometry("800x600")
 m.title('Untitled-Notepad')
+m.config(menu=m)
 menu = Menu(m)
-m.config(menu=menu)
-f = Menu(menu)
+f = Menu(menu, tearoff=False)
 
-menu.Filemenu.add_cascade(label='File', menu='f')
-f.Filemenu.add_command(label='New', command='f.__newFile')
-f.Filemenu.add_command(label='Open', command='f.__openFile')
-f.Filemenu.add_command(label='Save', command='f.__saveFile')
-f.Filemenu.add_separator()
-f.Filemenu.add_command(label='Exit', command=m.quit)
+menu.add_cascade(label='File', menu=f)
+f.add_command(label='New', accelerator='Ctrl+N', command='f.__newFile')
+f.add_command(label='Open', accelerator='Ctrl+O', command='f.__openFile')
+f.add_command(label='Save', accelerator='Ctrl+S', command='f.__saveFile')
+f.add_separator()
+f.add_command(label='Exit', command=m.quit)
 
-menu.Editmenu.add_cascade(label='Edit', menu='f')
-f.Editmenu.add_command(label='Cut', command='f.__cut')
-f.Editmenu.add_command(label='Copy', command='f.__copy')
-f.Editmenu.add_command(label='Paste', command='f.__paste')
-f
+e = Menu(menu, tearoff=False)
+menu.add_cascade(label='Edit', menu=e)
+e.add_command(label='Cut', command='e.__cut')
+e.add_command(label='Copy', command='e.__copy')
+e.add_command(label='Paste', command='e.__paste')
 
-menu.Commandmenu.add_cascade(label='Commands', menu='f')
-f.Commandmenu.add_command(label='About Commands', command='f.__showCommands')
+c = Menu(menu, tearoff=False)
+menu.add_cascade(label='Commands', menu=c)
+c.add_command(label='About Commands', command='c.__showCommands')
 
-menu.Helpmenu.add_cascade(label='Help', menu='f')
-f.Helpmenu.add_command(label='About Notepad')
+h = Menu(menu, tearoff=False)
+menu.add_cascade(label='Help', menu=h)
+h.add_command(label='About Notepad')
+
+m.config(menu=menu)  # to view all the cascades
+m.mainloop()  # to open and hold
 
 
-mainloop()
 
 
