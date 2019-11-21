@@ -30,6 +30,11 @@ h = Menu(menu, tearoff=False)
 menu.add_cascade(label='Help', menu=h)
 h.add_command(label='About Notepad')
 
+
+text_editor = Text(m)
+text_editor.config(wrap='word', relief=FLAT)
+
+
 m.config(menu=menu)  # to view all the cascades
 m.mainloop()  # to open and hold
 
